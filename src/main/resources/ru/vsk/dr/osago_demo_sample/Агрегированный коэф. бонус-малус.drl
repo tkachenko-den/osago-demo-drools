@@ -1,0 +1,14 @@
+package ru.vsk.dr.osago_demo_sample;
+
+rule 'Агрегированный коэффициент бонус-малус по всем водителям'
+    salience -1
+    when
+        $calc: Calculation(formula matches "^.*КБМ.*$")
+        accumulate( Koefficient(code=='KBM-DRIVER', $value: value );
+                    $max_kbm : max($value)
+                  )
+    then
+        modify($calc){
+            setKoefBonusMalus((double)$max_kbm)
+        }
+end

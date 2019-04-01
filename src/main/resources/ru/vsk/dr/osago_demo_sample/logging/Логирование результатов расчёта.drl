@@ -1,0 +1,43 @@
+package ru.vsk.dr.osago_demo_sample.logging;
+// Этот файл исключительно для демонстрации возможности лонирования/трассировки
+// Никакой полезной нагрузки по расчёту он не несёт
+
+import ru.vsk.dr.osago_demo_sample.Calculation;
+import ru.vsk.dr.osago_demo_sample.Koefficient;
+
+
+rule 'Заголовок результатов'
+    @NotTrace
+    salience -1000
+    when
+    then
+        log.trace("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        log.trace("Результаты");
+end
+
+
+rule 'Показать результат калькуляции'
+    @NotTrace
+    salience -1001
+    when
+        $calc: Calculation()
+    then
+        log.trace($calc.toString());
+end
+
+rule 'Показать коэффициенты'
+    @NotTrace
+    salience -1002
+    when
+        Koefficient( $code:code,$value:value)
+    then
+        log.trace("Koefficient code="+$code+" value="+$value);
+end
+
+rule 'Footer лога результата'
+    @NotTrace
+    salience -1100
+    when
+    then
+        log.trace("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+end

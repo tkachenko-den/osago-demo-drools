@@ -1,0 +1,8 @@
+'Car.osagoCarCategory' : ['Мотоциклы','Легковые','Грузовые','Автобусы','Троллейбусы','Трамваи','Тракторы']
+'Insurant.type' : ['ФЛ','ЮЛ','ИП']
+'Koefficient.code' : ['KVS-DRIVER','KBM-DRIVER','КО','КВС','КМ','КП','КТ','КБМ','КН','КС','КПр']
+'OsagoPolicy.usingPeriod' : [3,4,5,6,7,8,9,10,11,12]
+'Driver.kbmPrevious' : ['M','0','1','2','3','4','5','6','7','8','9','10','11','12','13']
+'Driver.kbmNew' : ['M','0','1','2','3','4','5','6','7','8','9','10','11','12','13']
+'OsagoPolicy.insDuration' : ['5-15 days','16 days - 1 month','2 month','3 month','4 month','5 month','6 month','7 month','8 month','9 month','10+ month']
+'Car.registrationType' : ['RF','TRANSIT','FOREIGN']

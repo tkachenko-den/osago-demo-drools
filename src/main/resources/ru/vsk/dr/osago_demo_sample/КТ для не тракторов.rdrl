@@ -1,0 +1,16 @@
+package ru.vsk.dr.osago_demo_sample;
+
+import java.lang.Number;
+
+rule "КТ для не тракторов"
+	dialect "mvel"
+	activation-group "territoryKoefficient"
+	when
+		Car( osagoCarCategory != "Тракторы" )
+		UsingTerritory( value : koefForAuto != null , koefForAuto != 0.0 )
+		calc : Calculation( formula matches "^.*КТ.*$" )
+	then
+		modify( calc ) {
+				setKoefTerr( value )
+		}
+end

@@ -1,0 +1,14 @@
+package ru.vsk.dr.osago_demo_sample;
+
+import java.lang.Number;
+
+rule "Верхнее ограничение на фин. тариф"
+	dialect "mvel"
+	salience -11
+	when
+		$calc : Calculation( $bt : baseTariff != 0.0 , $kt : koefTerr, $kn : koefViolation)
+	then
+		modify( $calc ) {
+				setMaximumFinalTariff( ($kn>1?5:3)*$bt*$kt )
+		}
+end

@@ -1,0 +1,14 @@
+package ru.vsk.dr.osago_demo_sample;
+
+import java.lang.Number;
+
+rule "КН"
+	dialect "mvel"
+	when
+		OsagoPolicy( isApplyViolationKoef == true )
+		calc : Calculation( formula matches "^.*КН.*$" )
+	then
+		modify( calc ) {
+				setKoefViolation( 1.5 )
+		}
+end

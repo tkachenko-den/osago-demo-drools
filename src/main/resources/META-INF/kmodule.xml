@@ -1,0 +1,7 @@
+<kmodule xmlns="http://www.drools.org/xsd/kmodule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <kbase name="OSAGO-DEMO" default="true" eventProcessingMode="stream" equalsBehavior="identity" packages="ru.vsk.dr.osago_demo_sample">
+    <ksession name="SL" type="stateless" default="true" clockType="realtime"/>
+    <ksession name="SF" type="stateful" default="false" clockType="realtime"/>
+    <ksession name="SF2" type="stateful" default="false" clockType="realtime"/>
+  </kbase>
+</kmodule>

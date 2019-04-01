@@ -1,0 +1,9 @@
+package ru.vsk.dr.osago_demo_sample;
+
+query "CalculationResult"
+    calcResult : ru.vsk.dr.osago_demo_sample.Calculation()
+end
+
+query "AllKoefficients"
+    allKoeff : ru.vsk.dr.osago_demo_sample.Koefficient()
+end

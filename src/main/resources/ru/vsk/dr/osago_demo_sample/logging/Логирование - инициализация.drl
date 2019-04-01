@@ -1,0 +1,67 @@
+package ru.vsk.dr.osago_demo_sample.logging;
+// Этот файл исключительно для демонстрации возможности лонирования/трассировки
+// Никакой полезной нагрузки по расчёту он не несёт
+
+import ru.vsk.dr.osago_demo_sample.Car;
+import ru.vsk.dr.osago_demo_sample.OsagoPolicy;
+import ru.vsk.dr.osago_demo_sample.UsingTerritory;
+import ru.vsk.dr.osago_demo_sample.Insurant;
+import ru.vsk.dr.osago_demo_sample.Driver;
+
+
+
+rule 'Заголовок'
+    @NotTrace
+    salience 10000
+    when
+        
+    then
+        log.trace("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        log.trace("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        log.trace("Новый расчёт: ");
+end
+
+rule 'Данные по полису'
+    @NotTrace
+    salience 9999
+    when
+        $pol: OsagoPolicy()
+    then
+        log.trace($pol.toString());
+end
+
+rule 'Данные по машине'
+    @NotTrace
+    salience 9999
+    when
+        $car: Car()
+    then
+        log.trace($car.toString());
+end
+
+rule 'Данные по водителям'
+    @NotTrace
+    salience 9999
+    when
+        $dr: Driver()
+    then
+        log.trace($dr.toString());
+end
+
+rule 'Данные по территории использования'
+    @NotTrace
+    salience 9999
+    when
+        $tr: UsingTerritory()
+    then
+        log.trace($tr.toString());
+end
+
+rule 'Данные по страхователю'
+    @NotTrace
+    salience 9999
+    when
+        $ins: osago_demo_sample.Insurant()
+    then
+        log.trace($ins.toString());
+end

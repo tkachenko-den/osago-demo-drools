@@ -1,0 +1,14 @@
+package ru.vsk.dr.osago_demo_sample;
+
+import java.lang.Number;
+
+rule "Расчёт финального тарифа"
+	dialect "mvel"
+	salience -10
+	when
+		calc : Calculation( $KVS : koefAgeStage, $BT : baseTariff, $KBM : koefBonusMalus, $KP : koefInsTerm, $KO : koefLimitation, $KM : koefPower, $KT : koefTerr, $KPR : koefTrailer, $KC : koefUsingPeriod, $KN : koefViolation)
+	then
+		modify( calc ) {
+				setFinalTariff( $BT * $KVS * $KBM * $KP * $KO * $KM * $KT * $KPR * $KC * $KN )
+		}
+end

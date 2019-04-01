@@ -1,0 +1,13 @@
+package ru.vsk.dr.osago_demo_sample;
+
+import java.lang.Number;
+
+rule "БТ"
+	dialect "mvel"
+	when
+		calc : Calculation( $maxTariff : maxBaseTariff != null )
+	then
+		modify( calc ) {
+				setBaseTariff( $maxTariff )
+		}
+end

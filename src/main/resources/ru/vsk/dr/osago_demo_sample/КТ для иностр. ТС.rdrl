@@ -1,0 +1,16 @@
+package ru.vsk.dr.osago_demo_sample;
+
+import java.lang.Number;
+
+rule "КТ для иностр. ТС"
+	dialect "mvel"
+	activation-group "territoryKoefficient"
+	salience 5
+	when
+		Car( registrationType == "FOREIGN" )
+		calc : Calculation( formula matches "^.*КТ.*$" )
+	then
+		modify( calc ) {
+				setKoefTerr( 1.7 )
+		}
+end

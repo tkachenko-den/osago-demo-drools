@@ -1,0 +1,15 @@
+package ru.vsk.dr.osago_demo_sample;
+
+rule 'Агрегированный коэффициент возраст-стаж по всем водителям'
+    salience -1
+    when
+        $calc: Calculation(formula matches "^.*КВС.*$")
+        accumulate( Koefficient(code=='KVS-DRIVER', $value: value );
+                    $max_kvs : max($value)
+                  )
+    then
+        modify($calc){
+            setKoefAgeStage((double)$max_kvs)
+        };
+end
+

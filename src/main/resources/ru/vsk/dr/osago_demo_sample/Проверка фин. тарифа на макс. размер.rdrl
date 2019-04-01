@@ -1,0 +1,14 @@
+package ru.vsk.dr.osago_demo_sample;
+
+import java.lang.Number;
+
+rule "Проверка фин. тарифа на макс. размер"
+	dialect "mvel"
+	salience -12
+	when
+		calc : Calculation( finalTariff > ( maximumFinalTariff ) , $maxTar : maximumFinalTariff)
+	then
+		modify( calc ) {
+				setFinalTariff( $maxTar )
+		}
+end

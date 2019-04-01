@@ -1,0 +1,27 @@
+package ru.vsk.dr.osago_demo_sample;
+
+import java.lang.Number;
+
+rule "Инициализация объекта калькуляции"
+	dialect "mvel"
+	salience 1000
+	when
+		not (Calculation( )) 
+	then
+		Calculation fact0 = new Calculation();
+		fact0.setBaseTariff( 0.0 );
+		fact0.setFinalTariff( 0.0 );
+		fact0.setFormula( "" );
+		fact0.setKoefAgeStage( 1.0 );
+		fact0.setKoefBonusMalus( 1.0 );
+		fact0.setKoefInsTerm( 1.0 );
+		fact0.setKoefLimitation( 1.0 );
+		fact0.setKoefPower( 1.0 );
+		fact0.setKoefTerr( 1.0 );
+		fact0.setKoefUsingPeriod( 1.0 );
+		fact0.setKoefTrailer( 1.0 );
+		fact0.setKoefViolation( 1.0 );
+		fact0.setMinBaseTariff( 1.0 );
+		fact0.setMaxBaseTariff( 1.0 );
+		insert( fact0 );
+end
